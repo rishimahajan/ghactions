@@ -105,6 +105,11 @@ variable "terraform_backend_s3_bucket" {
 resource "aws_s3_bucket" "tf_state_bucket" {
   bucket = var.terraform_backend_s3_bucket
 
+  force_destroy = true
+
+  lifecycle {
+    prevent_destroy = false
+  }
 
 #  tags = {
 #    Name = var.tags
